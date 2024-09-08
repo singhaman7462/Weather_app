@@ -1,8 +1,8 @@
 import React from "react";
 
-function Temperature() {
+function Temperature({setCity,stats}) {
   const handleCityChange = (e) => {
-    console.log(e.target.value);
+    setCity(e.target.value);
   };
 
   return (
@@ -13,6 +13,7 @@ function Temperature() {
           className="bg-slate-600 border border-slate-500 text-slate-200 placeholder-slate-400 text-md w-60 p-2 focus:outline-none focus:border-slate-400"
           placeholder="Enter your city name"
           onChange={handleCityChange}
+          defaultValue="Patna"
         />
         <div className="m-4">
           <svg
@@ -37,7 +38,7 @@ function Temperature() {
         </div>
       </div>
 
-      <div className="flex justify-center mt-4">
+      <div className="flex justify-center mt-8">
         {/* <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -59,7 +60,7 @@ function Temperature() {
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          className="w-10 h-10 text-slate-200 text-transform scale-100 hover:scale-110 transition-transform duration-300 ease-in-out"
+          className="w-16 h-16 text-slate-200 text-transform scale-100 hover:scale-110 transition-transform duration-300 ease-in-out"
         >
           <path
             stroke-linecap="round"
@@ -69,17 +70,17 @@ function Temperature() {
         </svg>
       </div>
 
-      <div className="flex justify-center items-center text-slate-200 mt-1">
-        <p className="font-semibold text-[40px]">23</p>
+      <div className="flex justify-center items-center text-slate-200 mt-8">
+        <p className="font-semibold text-[40px]">{stats.temp}</p>
         <span className="text-[25px]">°C</span>
       </div>
 
-      <div className="flex justify-center items-center text-slate-300 mt-4 text-[25px] text-transform scale-100 hover:scale-110 transition-transform duration-300 ease-in-out">
-        Mist
+      <div className="flex justify-center items-center text-slate-300 mt-8 text-[30px] text-transform scale-100 hover:scale-110 transition-transform duration-300 ease-in-out">
+        {stats.condition}
       </div>
 
       <div className="flex justify-center text-slate-400 mt-5 text-[15px]">
-        Todays date and location
+        Today:{stats.time} || {stats.location}
       </div>
     </>
   );
