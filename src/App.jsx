@@ -6,7 +6,8 @@ import Temperature from "./components/Temperature";
 function App() {
   const [city, setCity] = useState("Patna");
   const [weatherData, setWeatherData] = useState(null);
-  const apiUrl = `https://api.weatherapi.com/v1/current.json?key=4f444583b86b495aadc190847240809&q=${city}&aqi=yes`;
+  const apiKey=import.meta.env.VITE_SECRET_KEY;
+  const apiUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=yes`;
 
   useEffect(() => {
     fetch(apiUrl)
